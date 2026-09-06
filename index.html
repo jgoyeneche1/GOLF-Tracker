@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Golf Light</title>
+
+<!--
+  ============================================================================
+  ANTES DE SUBIR ESTE ARCHIVO A GITHUB, REEMPLAZÁ ESTAS 2 COSAS (buscá "TU-"):
+  1) TU-USUARIO / TU-REPO más abajo (ícono para "Agregar a pantalla de inicio")
+  2) TU_URL_DE_IMPLEMENTACION más abajo (la URL /exec de tu app de Apps Script)
+  ============================================================================
+-->
+
+<!-- Ícono para iOS al agregar a la pantalla de inicio.
+     Subí golf_light_192.png a este mismo repo de GitHub (por ejemplo en la raíz,
+     junto a este index.html) y reemplazá TU-USUARIO y TU-REPO por los tuyos. -->
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/TU-USUARIO/TU-REPO/main/golf_light_192.png" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Golf Light" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="#16233F" />
+
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    overflow: hidden; background: #16233F;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  #bienvenida {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 32px 28px;
+    background: linear-gradient(160deg, #16233F 0%, #2B4570 100%);
+    color: #fff;
+  }
+
+  #bienvenida img.logo {
+    width: 108px; height: 108px; border-radius: 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  #bienvenida h1 {
+    margin: 0 0 10px; font-size: 26px; font-weight: 800; letter-spacing: 0.3px;
+  }
+
+  #bienvenida .sub {
+    margin: 0 0 34px; font-size: 14.5px; line-height: 1.5;
+    color: #E7ECF6; max-width: 300px; opacity: 0.9;
+  }
+
+  #bienvenida .boton {
+    padding: 15px 46px; border-radius: 999px;
+    background: #F2B441; color: #16233F;
+    border: none; font-size: 16px; font-weight: 800;
+    letter-spacing: 0.3px; cursor: pointer;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.28);
+  }
+
+  #bienvenida .boton:active { transform: scale(0.97); }
+
+  #appFrame {
+    display: none;
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+</style>
+</head>
+<body>
+
+  <div id="bienvenida">
+    <img class="logo" src="https://raw.githubusercontent.com/TU-USUARIO/TU-REPO/main/golf_light_512.png" alt="Golf Light" />
+    <h1>Golf Light</h1>
+    <p class="sub">Tarjetas de puntuación, hándicap WHS y estadísticas del grupo.</p>
+    <button class="boton" id="btnIniciar">Iniciar</button>
+  </div>
+
+  <iframe id="appFrame" allow="clipboard-write; web-share; camera"></iframe>
+
+  <script>
+    // Reemplazá esta URL por la de tu propia implementación de Apps Script
+    // (Implementar > Gestionar implementaciones > ícono de copiar, termina en /exec).
+    var URL_APP = "TU_URL_DE_IMPLEMENTACION";
+
+    document.getElementById('btnIniciar').addEventListener('click', function () {
+      var frame = document.getElementById('appFrame');
+      var url = URL_APP + "?inicio=1&_v=" + Date.now();
+      frame.src = url;
+      frame.style.display = 'block';
+      document.getElementById('bienvenida').style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
